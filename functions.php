@@ -71,6 +71,42 @@ if ( function_exists('register_sidebar') )
     'after_title' => '</h3>',
 ));
 
+// Lizards' author applet
+
+if(function_exists('register_sidebar_widget'))
+	register_sidebar_widget(__('Author Statistics'),'bento_theme_author_statistics');
+	
+function bento_theme_author_statistics() {
+    global $wpdb;
+	$bento_user_query = "SELECT ID, user_email, user_url, display_name FROM $wpdb->users";
+	$bento_users = $wpdb->get_results($bento_user_query);
+	
+	// detect if we should use "lizards" or just "Authors"
+	if (get_bloginfo('url') === "http://news.opensuse.org" || get_bloginfo('url') === "http://lizards.opensuse.org") {
+		$widget_authors_title = "Lizards";
+	} else {
+		$widget_authors_title = "Authors";
+	}
+	
+	$output .= "<li class=\"widget box box-shadow widget_authors\"><h3 class=\"box-subheader\">".$widget_authors_title."</h3>";
+	$output .= "<ul>";
+	foreach ($bento_users as $bento_user) {
+		$output .= "<li>";
+		$output .= get_avatar($bento_user->user_email,32);
+		if ($bento_user->user_url != "") {
+		$output .= "<a title=\"Posts by ".$bento_user->display_name."\" href=\"".$bento_user->user_url."\">";
+		$output .= $bento_user->display_name;
+		$output .= "</a>";
+		} else {	
+		$output .= $bento_user->display_name;
+		} 
+		$output .= " (".count_user_posts($bento_user->ID).") ";
+		$output .= "</li>";
+	}
+	$output .= "</ul></li>";
+	echo $output;
+}
+
 // Custom Comment for Bento-Theme 
 function bento_theme_comment($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>
@@ -103,8 +139,5 @@ function bento_theme_comment($comment, $args, $depth) {
       </div>
             <div class="clearfix">
      </div>
-
-
-
 
 <?php } // end ?>

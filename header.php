@@ -40,6 +40,9 @@
   <!-- social service scripts -->
   <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
+  <!-- entry centered image auto resize scripts -->
+  <script type="text/javascript" src="<?php get_template_directory_uri();?>/resize.js"></script>
+
   <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'your-theme' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
   <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'your-theme' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -110,7 +113,58 @@
 
   <div id="subheader" class="container_12">
     <div id="breadcrump" class="grid_8 alpha">
-      <a href="/"><img src="http://static.opensuse.org/themes/bento/images/home_grey.png" width="16" height="16" alt="Home" /></a> <?php echo do_shortcode('[simple_crumbs root="Home" /]') ?>
+      <!-- This will at first try detect if it's openSUSE official sites, if not, then 
+      	display a self page level navigation for better display your own site names.
+      	-->
+      <?php // for openSUSE official sites ?>
+      <?php if (get_bloginfo('url') === "http://news.opensuse.org" || get_bloginfo('url') === "http://lizards.opensuse.org") { ?>
+      	<a href="<?php bloginfo('url');?>"><img src="http://static.opensuse.org/themes/bento/images/home_grey.png" width="16" height="16" alt="Home" /></a> <?php echo do_shortcode('[simple_crumbs root="Home" /]') ?>
+      <?php } else { // for normal personal blog?>
+      	<a style="display:inline-block;" href="<?php bloginfo('url');?>">
+      	<img src="http://static.opensuse.org/themes/bento/images/home_grey.png" width="16" height="16" alt="Home" />
+      	<?php if( is_home() ) {//see if home ?>
+      		<?php bloginfo('name'); ?>
+      	<?php } elseif ( is_single() ) {// see if single ?>
+      		<?php bloginfo('name');?> </a> / 
+      		<?php 
+				$category = get_the_category(); 
+				if($category[0]){
+					echo '<a style="display:inline-block;" href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>';
+			} ?> / 
+			<?php the_title(); ?>
+		<?php } elseif ( is_category() ) {// see if category ?>
+      		<?php bloginfo('name');?> </a> / 
+      		<?php 
+				$category = get_the_category(); 
+				if($category[0]){
+					echo '<a style="display:inline-block;" href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>';
+			} ?> 
+		<?php } elseif ( is_tag()) {// see if tag ?>
+			<?php bloginfo('name');?> </a> /
+			<?php
+				$posttags = get_the_tags();
+				$count=0;
+				if ($posttags) {
+  					foreach($posttags as $tag) {
+    					$count++;
+    					if (1 == $count) {
+      						echo '<a href="'.get_tag_link($tag->term_id).'">'.$tag->name.'</a>' . ' ';
+    					}
+  					}
+				}
+			?>
+		<?php } elseif ( is_search()) {// see if search ?>
+		</a> search results:
+      	<?php } elseif ( is_page()) {// see if page ?>
+      		<?php bloginfo('name');?> </a> /
+      		<?php
+				$parent_title = get_the_title($post->post_parent);
+				echo $parent_title;
+			?>
+      	<?php } else { // elsewise ?>
+      		<?php bloginfo('name');?> / Command not found. </a>
+      	<?php } // end page class detection?>
+      	<?php } // end normal personal blog?>
     </div>
     
     <?php #if (!current_user_can('level_0')) { // show login ?>
