@@ -176,11 +176,11 @@
       </div>
     <?php } else { // Show Login ?>
       <div class="grid_4" id="login-wrapper">
-	<? php if (get_bloginfo('url') === "http://news.opensuse.org" || get_bloginfo('url') === "lizards.opensuse.org") { ?>
+	<?php if (get_bloginfo('url') === "http://news.opensuse.org" || get_bloginfo('url') === "lizards.opensuse.org") { ?>
         <a href="#signup-page">Sign up</a> | 
-	<? php } else { ?>
-	<a href="./wp-admin">Sign up</a> |
-	<? } ?>
+	<?php } else { ?>
+	<a href="<?php bloginfo('url'); ?>/wp-login.php?action=register">Sign up</a> |
+	<?php } ?>
         <!-- <a id="login-trigger" href="" title="Login">Login</a> -->
         <!-- wp_login_form() ==> http://codex.wordpress.org/Function_Reference/wp_login_form -->
         <a href="<?php echo wp_login_url(); ?>" title="Login">Login</a>
