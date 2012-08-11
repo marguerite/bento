@@ -34,14 +34,14 @@
   -->
 
   <!-- translated global navigation -->
-  <script src="<?php remote_theme_url('get_theme_url'); ?>/js/l10n/global-navigation-data-en_US.js" type="text/javascript" charset="utf-8"></script>
+  <script src="<?php remote_theme_url('get_theme_url'); ?>/js/l10n/global-navigation-data-zh_CN.js" type="text/javascript" charset="utf-8"></script>
   <script src="<?php remote_theme_url('get_theme_url'); ?>/js/global-navigation.js" type="text/javascript" charset="utf-8"></script>
 
   <!-- social service scripts -->
   <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
-  <!-- entry centered image auto resize scripts -->
-  <script type="text/javascript" src="<?php get_template_directory_uri();?>/resize.js"></script>
+  <!-- auto fetch favicon as link image -->
+  <script type="text/javascript" src="<?php echo get_bloginfo('template_url');?>/js/favicon.js"></script>
 
   <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'your-theme' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
   <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'your-theme' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />

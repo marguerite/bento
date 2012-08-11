@@ -71,6 +71,17 @@ if ( function_exists('register_sidebar') )
     'after_title' => '</h3>',
 ));
 
+// Count Down
+if(function_exists('register_sidebar_widget'))
+	register_sidebar_widget(__('openSUSE Count Down'),'bento_theme_countdown');
+	
+function bento_theme_countdown() {
+	$output .= "<li class=\"widget box box-shadow widget_countdown\"><h3 class=\"box-subheader\">新版倒计时</h3>";
+	$output .= "<a style=\"display:block;margin: 0 auto;width:130px;\" href=\"http://software.opensuse.org/developer/zh_CN\">";
+	$output .= "<img src=\"".get_bloginfo('template_url')."/openSUSE12.2.png\"/></a></li>";
+	echo $output;
+}
+
 // Lizards' author applet
 
 if(function_exists('register_sidebar_widget'))
@@ -85,7 +96,7 @@ function bento_theme_author_statistics() {
 	if (get_bloginfo('url') === "http://news.opensuse.org" || get_bloginfo('url') === "http://lizards.opensuse.org") {
 		$widget_authors_title = "Lizards";
 	} else {
-		$widget_authors_title = "Authors";
+		$widget_authors_title = "作者";
 	}
 	
 	$output .= "<li class=\"widget box box-shadow widget_authors\"><h3 class=\"box-subheader\">".$widget_authors_title."</h3>";

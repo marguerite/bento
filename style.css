@@ -421,6 +421,7 @@ table.ec3_schedule td.ec3_to {
 
 /* Playground */
 
+/* better auto size image */
 p img {
   height: auto;
 }
