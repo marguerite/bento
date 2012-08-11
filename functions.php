@@ -71,6 +71,21 @@ if ( function_exists('register_sidebar') )
     'after_title' => '</h3>',
 ));
 
+// Subscribe
+if(function_exists('register_sidebar_widget'))
+	register_sidebar_widget(__('subscrible'),'bento_theme_subscribe');
+	
+function bento_theme_subscribe() {
+	$output .= "<li class=\"widget box box-shadow widget_countdown\"><h3 class=\"box-subheader\">订阅</h3>";
+	$output .= "<ul style=\"display:block;\">";
+	$output .= "<li style=\"float:left\"><a href=\"https://twitter.com/#!/suselady\"><img src=\"".get_bloginfo('template_url')."/images/geeko-twitter.png\"/></a></li>";
+	$output .= "<li style=\"float:left\"><a href=\"http://www.plurk.com/suselady\"><img src=\"".get_bloginfo('template_url')."/images/geeko-plurk.png\"/></a></li>";
+	$output .= "<li style=\"float:left\"><a href=\"http://www.facebook.com/groups/opensuse.zh/\"><img src=\"".get_bloginfo('template_url')."/images/geeko-facebook.png\"/></a></li>";
+	$output .= "<li style=\"float:left\"><a href=\"".get_bloginfo('url')."/feed/\"><img src=\"".get_bloginfo('template_url')."/images/geeko-RSS.png\"/></a></li>";
+	$output .= "</ul><div style=\"clear:both;\" /></li>";
+	echo $output;
+}
+
 // Count Down
 if(function_exists('register_sidebar_widget'))
 	register_sidebar_widget(__('openSUSE Count Down'),'bento_theme_countdown');
