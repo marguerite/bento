@@ -7,32 +7,32 @@ $(document).ready(function() {
 		  if_image.src = faviconURL;
 		  // detect if don't has children (usually an image); and the real favicon is accessable.
 		if ($(this).children().length <= 0 && if_image.width > 0) {
-		  $(this).before('<img height=\"16px\" width=\"auto\" style=\"margin-right:2px;\" src=\"'+faviconURL+'\"/>');
+		  $(this).before('<img height=\"16px\" width=\"16px\" style=\"margin-right:2px;\" src=\"'+faviconURL+'\"/>');
 		  }
 		// SuSE related sites hack
 		// detec herf contains suse.
 		else if ( $(this).attr('href').indexOf('suse') != -1 && $(this).children().length <= 0) {
-		  $(this).before("<img height=\"16px\" width=\"auto\" style=\"margin-right:2px;\" src=\"http://static.opensuse.org/themes/bento/images/favicon.png\"/>");
+		  $(this).before("<img height=\"16px\" width=\"16px\" style=\"margin-right:2px;\" src=\"http://static.opensuse.org/themes/bento/images/favicon.png\"/>");
 		}
 		// KDE related sites hack
 		else if ( $(this).attr('href').indexOf('kde') != -1 && $(this).children().length <= 0) {
-		  $(this).before("<img height=\"16px\" width=\"auto\" style=\"margin-right:2px;\" src=\"http://kde.org/media/images/favicon.ico\"/>");
+		  $(this).before("<img height=\"16px\" width=\"16px\" style=\"margin-right:2px;\" src=\"http://kde.org/media/images/favicon.ico\"/>");
 		}
 		// GNOME releated sites hack		
 		else if ( $(this).attr('href').indexOf('gnome') != -1 && $(this).children().length <= 0) {
-		  $(this).before("<img height=\"16px\" width=\"auto\" style=\"margin-right:2px;\" src=\"http://blogs.gnome.org/favicon.ico\"/>");
+		  $(this).before("<img height=\"16px\" width=\"16px\" style=\"margin-right:2px;\" src=\"http://blogs.gnome.org/favicon.ico\"/>");
 		}	
 		// Fedora related sites hack
 		else if ( $(this).attr('href').indexOf('fedora') != -1 && $(this).children().length <= 0) {
-		  $(this).before("<img height=\"16px\" width=\"auto\" style=\"margin-right:2px;\" src=\"http://fedoraproject.org/static/images/favicon.ico\"/>");
+		  $(this).before("<img height=\"16px\" width=\"16px\" style=\"margin-right:2px;\" src=\"http://fedoraproject.org/static/images/favicon.ico\"/>");
 		}
 		// Ubuntu related sites hack
 		else if ( $(this).attr('href').indexOf('ubuntu') != -1 && $(this).children().length <= 0) {
-		  $(this).before("<img height=\"16px\" width=\"auto\" style=\"margin-right:2px;\" src=\"http://ubuntu.com/sites/all/themes/ubuntu10/favicon.ico\"/>");
+		  $(this).before("<img height=\"16px\" width=\"16px\" style=\"margin-right:2px;\" src=\"http://ubuntu.com/sites/all/themes/ubuntu10/favicon.ico\"/>");
 		}
 		// GIMP related sites hack
 		else if ( $(this).attr('href').indexOf('gimp') != -1 && $(this).children().length <= 0) {
-		  $(this).before("<img height=\"16px\" width=\"auto\" style=\"margin-right:2px;\" src=\"http://gimp.org/images/wilber16.png\"/>");
+		  $(this).before("<img height=\"16px\" width=\"16px\" style=\"margin-right:2px;\" src=\"http://gimp.org/images/wilber16.png\"/>");
 		}
 		else {
 		  // do not add judgement here, use another "else if".
