@@ -71,20 +71,40 @@ if ( function_exists('register_sidebar') )
     'after_title' => '</h3>',
 ));
 
-// Subscribe
-if(function_exists('register_sidebar_widget'))
-	register_sidebar_widget(__('subscrible'),'bento_theme_subscribe');
-	
-function bento_theme_subscribe() {
-	$output .= "<li class=\"widget box box-shadow widget_countdown\"><h3 class=\"box-subheader\">订阅</h3>";
-	$output .= "<ul style=\"display:block;\">";
-	$output .= "<li style=\"float:left\"><a href=\"https://twitter.com/#!/suselady\"><img src=\"".get_bloginfo('template_url')."/images/geeko-twitter.png\"/></a></li>";
-	$output .= "<li style=\"float:left\"><a href=\"http://www.plurk.com/suselady\"><img src=\"".get_bloginfo('template_url')."/images/geeko-plurk.png\"/></a></li>";
-	$output .= "<li style=\"float:left\"><a href=\"http://www.facebook.com/groups/opensuse.zh/\"><img src=\"".get_bloginfo('template_url')."/images/geeko-facebook.png\"/></a></li>";
-	$output .= "<li style=\"float:left\"><a href=\"".get_bloginfo('url')."/feed/\"><img src=\"".get_bloginfo('template_url')."/images/geeko-RSS.png\"/></a></li>";
-	$output .= "</ul><div style=\"clear:both;\" /></li>";
-	echo $output;
-}
+// Custom Comment for Bento-Theme 
+function bento_theme_comment($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+   <li <?php comment_class('box grey'); ?> id="li-comment-<?php comment_ID() ?>">
+     <div id="comment-<?php comment_ID(); ?>">
+      <div class="comment-author vcard">
+         <?php echo get_avatar($comment,$size='48',$default='<path_to_url>' ); ?>
+         <?php printf(__('<strong><cite class="fn">%s</cite></strong>'), get_comment_author_link()) ?>
+      </div>
+            
+      <?php if ($comment->comment_approved == '0') : ?>
+         <em><?php _e('Your comment is awaiting moderation.') ?></em>
+         <br />
+      <?php endif; ?>
+        
+      </div>
+
+      <div class="comment-meta commentmetadata">
+        <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a>
+        |
+        <?php edit_comment_link(__('Edit'),'  ','') ?>
+      </div>
+
+      <?php comment_text() ?>
+
+
+
+      <div class="reply">
+        <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+      </div>
+            <div class="clearfix">
+     </div>
+
+<?php } // end custom comment
 
 // Count Down
 if(function_exists('register_sidebar_widget'))
@@ -133,37 +153,7 @@ function bento_theme_author_statistics() {
 	echo $output;
 }
 
-// Custom Comment for Bento-Theme 
-function bento_theme_comment($comment, $args, $depth) {
-   $GLOBALS['comment'] = $comment; ?>
-   <li <?php comment_class('box grey'); ?> id="li-comment-<?php comment_ID() ?>">
-     <div id="comment-<?php comment_ID(); ?>">
-      <div class="comment-author vcard">
-         <?php echo get_avatar($comment,$size='48',$default='<path_to_url>' ); ?>
-         <?php printf(__('<strong><cite class="fn">%s</cite></strong>'), get_comment_author_link()) ?>
-      </div>
-            
-      <?php if ($comment->comment_approved == '0') : ?>
-         <em><?php _e('Your comment is awaiting moderation.') ?></em>
-         <br />
-      <?php endif; ?>
-        
-      </div>
+//include bento_theme_subscribe
+include "bento_theme_subscribe.php";
 
-      <div class="comment-meta commentmetadata">
-        <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a>
-        |
-        <?php edit_comment_link(__('Edit'),'  ','') ?>
-      </div>
-
-      <?php comment_text() ?>
-
-
-
-      <div class="reply">
-        <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-      </div>
-            <div class="clearfix">
-     </div>
-
-<?php } // end ?>
+?>
