@@ -191,14 +191,9 @@ if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
 /* 编辑器初始化代码 end */
 </script>
 
-
-
-          <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
-
         </div>
       </div>
       <?php endwhile; endif; ?>
-    <?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
 
   </div>
 
