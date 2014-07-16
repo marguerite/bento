@@ -102,8 +102,6 @@
         <li id="item-support"><a href="http://opensuse.org/sitemap#support">Support</a></li>
         <li id="item-community"><a href="http://opensuse.org/sitemap#community">Community</a></li>
         <li id="item-development"><a href="http://opensuse.org/sitemap#development">Development</a></li>
-      </ul>
-      <ul>
 	<li><a href="http://blog.suse.org.cn/contribute/">投稿</a></li>
       </ul>
       <?php // End: openSUSE Global navigation ?>
