@@ -98,10 +98,12 @@
       
       <?php // Start: openSUSE Global navigation ?>
       <ul id="global-navigation">
-        <li id="item-downloads"><a href="http://opensuse.org/sitemap#downloads">Downloads</a></li>
-        <li id="item-support"><a href="http://opensuse.org/sitemap#support">Support</a></li>
-        <li id="item-community"><a href="http://opensuse.org/sitemap#community">Community</a></li>
-        <li id="item-development"><a href="http://opensuse.org/sitemap#development">Development</a></li>
+        <li id="item-downloads"><a href="http://opensuse.org/sitemap#downloads">下载</a></li>
+        <li id="item-support"><a href="http://opensuse.org/sitemap#support">支持</a></li>
+        <li id="item-community"><a href="http://opensuse.org/sitemap#community">社区</a></li>
+        <li id="item-development"><a href="http://opensuse.org/sitemap#development">开发</a></li>
+        <li><a href="https://zh.opensuse.org/">Wiki</a></li>
+        <li><a href="https://forum.suse.org.cn/">论坛</a></li>
 	<li><a href="http://blog.suse.org.cn/contribute/">投稿</a></li>
       </ul>
       <?php // End: openSUSE Global navigation ?>
