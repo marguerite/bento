@@ -145,16 +145,16 @@ if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
                    
     <div style="text-align: left; padding-top: 10px; margin-left: 10px;">
         <label style="vertical-align:top" for="tougao_content">文章内容:*</label>
-        <textarea rows="15" cols="55" id="tougao_content" name="tougao_content"></textarea>
+        <textarea rows="15" cols="80" id="tougao_content" name="tougao_content"></textarea>
     </div>
                    
-<div style="text-align: left; padding-top: 10px;">
+<div style="text-align: left; padding-top: 10px; margin-left: 10px;">
   <label for="CAPTCHA">验证码:
     <input id="CAPTCHA" style="width:110px;*float:left;" class="input" type="text" tabindex="24" size="10" value="" name="captcha_code" /> 看不清？<a href="javascript:void(0)" onclick="document.getElementById('captcha_img').src='<?php bloginfo('template_url'); ?>/captcha/captcha.php?'+Math.random();document.getElementById('CAPTCHA').focus();return false;">点击更换</a>
   </label>
 </div>
    
-<div style="text-align: left; padding-top: 10px;">
+<div style="text-align: left; padding-top: 10px; margin-left: 10px;">
   <label>
     <img id="captcha_img" src="<?php bloginfo('template_url'); ?>/captcha/captcha.php" />
   </label>
