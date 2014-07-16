@@ -58,7 +58,11 @@ if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
     $blog =  isset( $_POST['tougao_authorblog'] ) ? trim(htmlspecialchars($_POST['tougao_authorblog'], ENT_QUOTES)) : '';
     $title =  isset( $_POST['tougao_title'] ) ? trim(htmlspecialchars($_POST['tougao_title'], ENT_QUOTES)) : '';
     $category =  isset( $_POST['cat'] ) ? (int)$_POST['cat'] : 0;
-    $content =  isset( $_POST['tougao_content'] ) ? trim(htmlspecialchars($_POST['tougao_content'], ENT_QUOTES)) : '';
+    $content =  isset( $_POST['tougao_content'] ) ? trim($_POST['tougao_content']) : '';
+    $content = str_ireplace('?>', '?&gt;', $content);
+    $content = str_ireplace('<?', '&lt;?', $content);
+    $content = str_ireplace('<script', '&lt;script', $content);
+    $content = str_ireplace('<a ', '<a rel="external nofollow" ', $content);
    
     // 表单项数据验证
     if ( empty($name) || mb_strlen($name) > 20 ) {
@@ -168,6 +172,27 @@ if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
         <input type="reset" value="重填" />
     </div>
 </form>
+<script charset="utf-8" src="<?php bloginfo('template_url'); ?>/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="<?php bloginfo('template_url'); ?>/kindeditor/lang/zh_CN.js"></script>
+<script>
+/* 编辑器初始化代码 start */
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('#tougao_content', {
+        resizeType : 1,
+        allowPreviewEmoticons : false,
+        allowImageUpload : true, /* 开启图片上传功能，不需要就将true改成false */
+        items : [
+            'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+            'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+        });
+    });
+/* 编辑器初始化代码 end */
+</script>
+
+
+
           <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
 
         </div>
