@@ -30,7 +30,7 @@
    
 if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
     global $wpdb;
-    $current_url = 'http://你的投稿页面地址';   // 注意修改此处的链接地址
+    $current_url = 'http://blog.suse.org.cn/contribute/';   // 注意修改此处的链接地址
 
     $last_post = $wpdb->get_var("SELECT `post_date` FROM `$wpdb->posts` ORDER BY `post_date` DESC LIMIT 1");
 
@@ -62,7 +62,7 @@ if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
         wp_die('标题必须填写，且长度不得超过100字。<a href="'.$current_url.'">点此返回</a>');
     }
    
-    if ( empty($content) || mb_strlen($content) > 3000 || mb_strlen($content) < 100) {
+    if ( empty($content) || mb_strlen($content) > 3000 || mb_strlen($content) < 10) {
         wp_die('内容必须填写，且长度不得超过3000字，不得少于100字。<a href="'.$current_url.'">点此返回</a>');
     }
    
@@ -82,7 +82,7 @@ if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
         // 投稿成功给博主发送邮件
         // somebody#example.com替换博主邮箱
         // My subject替换为邮件标题，content替换为邮件内容
-        wp_mail("somebody#example.com","My subject","content");
+        wp_mail("somebody#example.com","投稿成功","您在 openSUSE 中国站点的投稿已成功。");
 
         wp_die('投稿成功！感谢投稿！<a href="'.$current_url.'">点此返回</a>', '投稿成功');
     }
