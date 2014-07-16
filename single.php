@@ -16,6 +16,14 @@
     <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
       <h2><?php the_title(); ?></h2>
       <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?> </small>
+
+	<div class="share-links">
+		<div class="share-link">
+			<a href="http://weibo.com/share/share.php?url=<?php the_permalink() ?>&title=<?php the_title(); ?>" title="分享到新浪微博"><img src="http://weibo.com/favicon.ico"/></a>
+		</div>
+		<div style="clear:all"/>
+	</div>
+
       
       <div class="entry">
         <?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
