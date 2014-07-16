@@ -59,10 +59,10 @@ class bento_theme_subscribe extends WP_Widget {
 		   	}
 		   else {
 				echo '<li style="float:left;">';
-		   		echo '<a href="'.get_bloginfo('url').'/feed/">';
-		   		echo '<img src="'.get_bloginfo('template_url').'/images/geeko-rss.png"/>';
-		   		echo '</a></li>'; 
-		   }
+			   	echo '<a href="'.get_bloginfo('url').'/feed/">';
+			   	echo '<img src="'.get_bloginfo('template_url').'/images/geeko-rss.png"/>';
+			   	echo '</a></li>'; 
+			}
 		   	
 		   if ($googleplus_url) {
 		   		echo '<li style="float:left;">';
@@ -143,4 +143,3 @@ class bento_theme_subscribe extends WP_Widget {
 add_action('widgets_init', create_function('','return register_widget("bento_theme_subscribe");'));	
 
 ?>
- 
