@@ -44,9 +44,9 @@
 
           <div class="share-links">
                 <div class="share-link">
-                        <a href="http://weibo.com/share/share.php?url=<?php the_permalink() ?>&title=<?php the_title(); ?>" title="分享到新浪微博"><img src="http://weibo.com/favicon.ico"/></a>
+                        <a href="http://v.t.sina.com.cn/share/share.php?url=<?php the_permalink() ?>&title=<?php the_title(); ?>" title="分享到新浪微博"><img src="http://weibo.com/favicon.ico"/></a>
                 </div>
-                <div style="clear:all"/>
+                <div class="clearfix"></div>
           </div>
 
 
