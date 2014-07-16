@@ -28,7 +28,18 @@
  *  去除了post type的限制；已登录用户投稿不用填写昵称、email和博客地址
  */
    
+if (!isset($_SESSION)) {
+    session_start();
+    session_regenerate_id(TRUE);
+}
+ 
 if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
+  if(empty($_POST['captcha_code'])
+    || empty($_SESSION['ludou_lcr_secretword'])
+    || (trim(strtolower($_POST['captcha_code'])) != $_SESSION['ludou_lcr_secretword'])
+  ) {
+    wp_die('验证码不正确！<a href="'.$current_url.'">点此返回</a>');
+  }
     global $wpdb;
     $current_url = 'http://blog.suse.org.cn/contribute/';   // 注意修改此处的链接地址
 
@@ -137,8 +148,21 @@ if( isset($_POST['tougao_form']) && $_POST['tougao_form'] == 'send') {
         <textarea rows="15" cols="55" id="tougao_content" name="tougao_content"></textarea>
     </div>
                    
-    <br clear="all">
-    <div style="text-align: left; padding-top: 10px;">
+<div style="text-align: left; padding-top: 10px;">
+  <label for="CAPTCHA">验证码:
+    <input id="CAPTCHA" style="width:110px;*float:left;" class="input" type="text" tabindex="24" size="10" value="" name="captcha_code" /> 看不清？<a href="javascript:void(0)" onclick="document.getElementById('captcha_img').src='<?php bloginfo('template_url'); ?>/captcha/captcha.php?'+Math.random();document.getElementById('CAPTCHA').focus();return false;">点击更换</a>
+  </label>
+</div>
+   
+<div style="text-align: left; padding-top: 10px;">
+  <label>
+    <img id="captcha_img" src="<?php bloginfo('template_url'); ?>/captcha/captcha.php" />
+  </label>
+</div>
+           
+<br clear="all">
+
+    <div style="text-align: left; padding-top: 10px; margin-left: 75px;">
         <input type="hidden" value="send" name="tougao_form" />
         <input type="submit" value="提交" />
         <input type="reset" value="重填" />
