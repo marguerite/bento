@@ -16,21 +16,6 @@
     <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
       <h2><?php the_title(); ?></h2>
       <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?> </small>
-
-      <div class="share-links">
-	<div class="share-link">
-              <a href="http://twitter.com/share" class="twitter-share-button"
-                data-url="<?php the_permalink() ?>"
-                data-text="openSUSE News: <?php the_title() ?>"
-                data-count="horizontal"
-                data-via="openSUSE">Tweet</a>
-        </div>
-        <div class="share-link">
-          <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo urlencode(get_permalink()); ?>&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
-        </div>
-        <div class="clear"></div>
-      </div>
-      
       
       <div class="entry">
         <?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>

@@ -38,7 +38,6 @@
   <script src="<?php remote_theme_url('get_theme_url'); ?>/js/global-navigation.js" type="text/javascript" charset="utf-8"></script>
 
   <!-- social service scripts -->
-  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
   <!-- auto fetch favicon as link image -->
   <script type="text/javascript" src="<?php echo get_bloginfo('template_url');?>/js/favicon.js"></script>
