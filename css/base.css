@@ -238,11 +238,11 @@ img.alignleft{margin:0 7px 2px 0;}
 .clear-both{clear:both;}
 .clear-right{clear:right;}
 .no-shadow{box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;}
-.button, button, input[type="submit"]{border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-color:#999;background:#DDD url('images/gradient-medium-short.png') repeat-x scroll 0 0;color:#555;}
-.button:hover, button:hover, input[type="submit"]:hover{background-color:#eee;border-color:#666;color:#069;cursor:pointer;}
+.button, button, input[type="submit"], input[type="reset"]{border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-color:#999;background:#DDD url('images/gradient-medium-short.png') repeat-x scroll 0 0;color:#555;}
+.button:hover, button:hover, input[type="submit"]:hover,input[type="reset"]:hover{background-color:#eee;border-color:#666;color:#069;cursor:pointer;}
 form *[disabled="disabled"], form *[disabled=""], form *[disabled="true"]{background-color:#f6f6f6;border-color:#ccc;color:#aaa;}
-.main .button, .main button, .main input[type="submit"]{background:#9c0 url('images/gradient-light-short-green.png') repeat-x scroll 0 -5px;color:#fcfcfc;}
-.main .button:hover, .main button:hover, .main input[type="submit"]:hover{border-color:#069;cursor:pointer;color:#fff;}
+.main .button, .main button, .main input[type="submit"], .main input[type="reset"]{background:#9c0 url('images/gradient-light-short-green.png') repeat-x scroll 0 -5px;color:#fcfcfc;}
+.main .button:hover, .main button:hover, .main input[type="submit"]:hover, .main input[type="reset"]:hover{border-color:#069;cursor:pointer;color:#fff;}
 .column_2{-moz-column-count:2;-moz-column-gap:20px;-webkit-column-count:2;-webkit-column-gap:20px;column-count:2;column-gap:20px;}
 .column_3{-moz-column-count:3;-moz-column-gap:20px;-webkit-column-count:3;-webkit-column-gap:20px;column-count:3;column-gap:20px;}
 .column_4{-moz-column-count:4;-moz-column-gap:20px;-webkit-column-count:4;-webkit-column-gap:20px;column-count:4;column-gap:20px;}
